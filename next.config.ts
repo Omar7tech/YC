@@ -6,8 +6,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'tenor.com',
+         protocol: 'https', 
+        hostname: '**',
+        port: '',
+        pathname: '**',
       },
     ],
   },

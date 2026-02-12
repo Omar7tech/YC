@@ -8,6 +8,11 @@ import {
 import programsData from "@/data/programs.json"
 
 export default function ProgramsSection() {
+    // Don't render anything if there are no programs
+    if (programsData.programs.length === 0) {
+        return null
+    }
+
     return (
         <div className="px-5 md:px-10 lg:px-20">
             <h1 className="text-[clamp(1.5rem,4vw,3rem)]">{programsData.sectionTitle}</h1>

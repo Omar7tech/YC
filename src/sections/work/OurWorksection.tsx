@@ -17,9 +17,16 @@ interface WorkItem {
 const workData = workJson as { categories: { name: string; items: WorkItem[] }[] }
 
 function OurWorksection() {
-  const [activeCategory, setActiveCategory] = useState<string>(workData.categories[0].name)
+  const [activeCategory, setActiveCategory] = useState<string>(() => 
+    workData.categories.length > 0 ? workData.categories[0].name : ''
+  )
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
   const [loadedVideos, setLoadedVideos] = useState<Set<string>>(new Set())
+  
+  // Don't render anything if there are no categories
+  if (workData.categories.length === 0) {
+    return null
+  }
   
   const categories = workData.categories.map(cat => cat.name)
   
@@ -137,7 +144,7 @@ function OurWorksection() {
                                 {item.link.title}
                             </a>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
                             <div>
                                 <p className="text-white text-sm font-medium">{activeCategory}</p>
                                 {item.title && <h3 className="text-white text-lg font-semibold">{item.title}</h3>}

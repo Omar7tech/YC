@@ -47,9 +47,23 @@ export default function WorkPage() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([0]))
-  const [uploadingFile, setUploadingFile] = useState<{ catIndex: number; itemIndex: number } | null>(null)
+  const [uploadingFile, setUploadingFile] = useState<{ catIndex: number; itemIndex: number; progress?: number } | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
   const [initialLoading, setInitialLoading] = useState(true)
+  const [confirmDialog, setConfirmDialog] = useState<{
+    show: boolean
+    type: 'category' | 'item'
+    catIndex?: number
+    itemIndex?: number
+    title: string
+    message: string
+  }>({ show: false, type: 'category', title: '', message: '' })
+  const [mediaTypeDialog, setMediaTypeDialog] = useState<{
+    show: boolean
+    catIndex: number
+    itemIndex: number
+    file: File | null
+  }>({ show: false, catIndex: 0, itemIndex: 0, file: null })
 
   // Drag and drop sensors
   const sensors = useSensors(
@@ -163,27 +177,82 @@ export default function WorkPage() {
     setWorkData(newData)
   }
 
+  const removeCategory = async (catIndex: number) => {
+    const category = workData.categories[catIndex]
+    
+    setConfirmDialog({
+      show: true,
+      type: 'category',
+      catIndex,
+      title: 'Delete Category',
+      message: `Are you sure you want to delete the category "${category.name}"? This will also delete all ${category.items.length} item(s) within it. This action cannot be undone.`
+    })
+  }
+
   const removeItem = async (catIndex: number, itemIndex: number) => {
-    
-    // Get the item being deleted
     const item = workData.categories[catIndex].items[itemIndex]
+    const categoryName = workData.categories[catIndex].name
     
-    // Check if item has an uploaded image and delete it
-    if (item.imageUrl && item.imageUrl.startsWith('/uploads/')) {
-      const filename = item.imageUrl.replace('/uploads/', '')
-      try {
-        await fetch(`/api/admin?filename=${encodeURIComponent(filename)}`, {
-          method: 'DELETE'
-        })
-      } catch (error) {
-        console.error('Error deleting image:', error)
+    setConfirmDialog({
+      show: true,
+      type: 'item',
+      catIndex,
+      itemIndex,
+      title: 'Delete Item',
+      message: `Are you sure you want to delete this item from "${categoryName}"?${item.title ? ` "${item.title}"` : ''} This action cannot be undone.`
+    })
+  }
+
+  const confirmDelete = async () => {
+    if (confirmDialog.type === 'category' && confirmDialog.catIndex !== undefined) {
+      const category = workData.categories[confirmDialog.catIndex]
+      
+      // Delete all uploaded files in the category
+      for (const item of category.items) {
+        if (item.imageUrl && item.imageUrl.startsWith('/uploads/')) {
+          const filename = item.imageUrl.replace('/uploads/', '')
+          try {
+            await fetch(`/api/admin?filename=${encodeURIComponent(filename)}`, {
+              method: 'DELETE'
+            })
+          } catch (error) {
+            console.error('Error deleting image:', error)
+          }
+        }
       }
+      
+      // Remove category from data
+      const newData = { ...workData }
+      newData.categories.splice(confirmDialog.catIndex, 1)
+      setWorkData(newData)
+      
+      // Remove from expanded categories if it was expanded
+      const newExpanded = new Set(expandedCategories)
+      newExpanded.delete(confirmDialog.catIndex)
+      setExpandedCategories(newExpanded)
+    } else if (confirmDialog.type === 'item' && confirmDialog.catIndex !== undefined && confirmDialog.itemIndex !== undefined) {
+      const item = workData.categories[confirmDialog.catIndex].items[confirmDialog.itemIndex]
+      
+      // Check if item has an uploaded image and delete it
+      if (item.imageUrl && item.imageUrl.startsWith('/uploads/')) {
+        const filename = item.imageUrl.replace('/uploads/', '')
+        try {
+          await fetch(`/api/admin?filename=${encodeURIComponent(filename)}`, {
+            method: 'DELETE'
+          })
+        } catch (error) {
+          console.error('Error deleting image:', error)
+        }
+      }
+      
+      // Remove item from data
+      const newData = { ...workData }
+      newData.categories[confirmDialog.catIndex].items.splice(confirmDialog.itemIndex, 1)
+      setWorkData(newData)
     }
     
-    // Remove item from data
-    const newData = { ...workData }
-    newData.categories[catIndex].items.splice(itemIndex, 1)
-    setWorkData(newData)
+    // Close dialog
+    setConfirmDialog({ show: false, type: 'category', title: '', message: '' })
   }
 
   const updateItem = (catIndex: number, itemIndex: number, field: string, value: string) => {
@@ -210,40 +279,68 @@ export default function WorkPage() {
 
   const handleImageUpload = async (catIndex: number, itemIndex: number, file: File) => {
     if (!file) return
-    setUploadingFile({ catIndex, itemIndex })
+    
+    // Show media type selection dialog
+    setMediaTypeDialog({
+      show: true,
+      catIndex,
+      itemIndex,
+      file
+    })
+  }
+
+  const proceedWithUpload = async (mediaType: 'image' | 'gif' | 'video') => {
+    const { catIndex, itemIndex, file } = mediaTypeDialog
+    if (!file) return
+    
+    setUploadingFile({ catIndex, itemIndex, progress: 0 })
+    setMediaTypeDialog({ show: false, catIndex: 0, itemIndex: 0, file: null })
     
     try {
       const formData = new FormData()
       formData.append('file', file)
       
-      const res = await fetch('/api/admin?action=upload', {
-        method: 'POST',
-        body: formData
+      // Create XMLHttpRequest for progress tracking
+      const xhr = new XMLHttpRequest()
+      
+      // Track upload progress
+      xhr.upload.addEventListener('progress', (event) => {
+        if (event.lengthComputable) {
+          const progress = Math.round((event.loaded / event.total) * 100)
+          setUploadingFile({ catIndex, itemIndex, progress })
+        }
       })
       
-      if (res.ok) {
-        const result = await res.json()
-        updateItem(catIndex, itemIndex, 'imageUrl', result.filePath)
-        
-        // Auto-detect media type based on file extension
-        const extension = file.name.split('.').pop()?.toLowerCase()
-        let mediaType: 'image' | 'gif' | 'video' = 'image'
-        
-        if (extension === 'gif') {
-          mediaType = 'gif'
-        } else if (['mp4', 'webm', 'mov', 'avi', 'mkv'].includes(extension || '')) {
-          mediaType = 'video'
+      // Handle completion
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          const result = JSON.parse(xhr.responseText)
+          updateItem(catIndex, itemIndex, 'imageUrl', result.filePath)
+          updateItem(catIndex, itemIndex, 'mediaType', mediaType)
+          setMessage(`Uploaded: ${result.fileName}`)
+        } else {
+          setMessage('Upload failed')
         }
-        
-        updateItem(catIndex, itemIndex, 'mediaType', mediaType)
-        setMessage(`Uploaded: ${result.fileName}`)
-      }
+        setUploadingFile(null)
+        setTimeout(() => setMessage(''), 3000)
+      })
+      
+      // Handle errors
+      xhr.addEventListener('error', () => {
+        setMessage('Upload failed')
+        setUploadingFile(null)
+        setTimeout(() => setMessage(''), 3000)
+      })
+      
+      // Open and send request
+      xhr.open('POST', '/api/admin?action=upload')
+      xhr.send(formData)
+      
     } catch (error) {
       setMessage('Upload failed')
+      setUploadingFile(null)
+      setTimeout(() => setMessage(''), 3000)
     }
-    
-    setUploadingFile(null)
-    setTimeout(() => setMessage(''), 3000)
   }
 
   if (initialLoading) return <div className="p-8">Loading...</div>
@@ -295,12 +392,29 @@ export default function WorkPage() {
             </div>
             <div className="flex items-center gap-3">
               <span className="text-white/50">{category.items.length} items</span>
+              <button
+                onClick={() => removeCategory(catIndex)}
+                className="text-red-400 hover:bg-red-500/10 p-2 rounded-lg transition-colors"
+                title="Delete category"
+              >
+                <Trash2 className="w-4 h-4" />
+              </button>
               {expandedCategories.has(catIndex) ? <ChevronDown /> : <ChevronRight />}
             </div>
           </button>
 
           {expandedCategories.has(catIndex) && (
             <div className="p-6 pt-0 border-t border-white/10">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-medium text-white/70">Work Items</h3>
+                <button
+                  onClick={() => addItem(catIndex)}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Item
+                </button>
+              </div>
               <SortableItemList category={category} catIndex={catIndex} />
             </div>
           )}
@@ -388,10 +502,27 @@ export default function WorkPage() {
                 uploadingFile?.catIndex === catIndex && uploadingFile?.itemIndex === itemIndex
                   ? 'bg-yellow-600' : 'bg-purple-600 hover:bg-purple-700'
               }`}>
-                <Upload className="w-4 h-4" />
+                {uploadingFile?.catIndex === catIndex && uploadingFile?.itemIndex === itemIndex ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    {uploadingFile.progress !== undefined && `${uploadingFile.progress}%`}
+                  </div>
+                ) : (
+                  <Upload className="w-4 h-4" />
+                )}
               </span>
             </label>
           </div>
+
+          {/* Upload Progress Bar */}
+          {uploadingFile?.catIndex === catIndex && uploadingFile?.itemIndex === itemIndex && uploadingFile.progress !== undefined && (
+            <div className="w-full bg-black/50 rounded-full h-2 overflow-hidden">
+              <div 
+                className="bg-linear-to-r from-purple-600 to-pink-600 h-full transition-all duration-300 ease-out"
+                style={{ width: `${uploadingFile.progress}%` }}
+              />
+            </div>
+          )}
 
           {item.imageUrl && (
             <div
@@ -560,6 +691,73 @@ export default function WorkPage() {
           ) : (
             <img src={previewImage} alt="Preview" className="max-w-full max-h-full rounded-lg" />
           )}
+        </div>
+      )}
+
+      {/* Custom Confirmation Dialog */}
+      {confirmDialog.show && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-md w-full">
+            <h2 className="text-xl font-semibold text-white mb-4">{confirmDialog.title}</h2>
+            <p className="text-white/80 mb-6">{confirmDialog.message}</p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setConfirmDialog({ show: false, type: 'category', title: '', message: '' })}
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDelete}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white font-medium transition-colors"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Media Type Selection Dialog */}
+      {mediaTypeDialog.show && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-md w-full">
+            <h2 className="text-xl font-semibold text-white mb-4">What type of media would you like to add?</h2>
+            <p className="text-white/60 text-sm mb-6">
+              File: {mediaTypeDialog.file?.name}
+            </p>
+            <div className="space-y-3 mb-6">
+              <button
+                onClick={() => proceedWithUpload('image')}
+                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-left transition-colors"
+              >
+                <div className="font-medium text-white">Image</div>
+                <div className="text-sm text-white/60">JPG, PNG, WebP</div>
+              </button>
+              <button
+                onClick={() => proceedWithUpload('gif')}
+                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-left transition-colors"
+              >
+                <div className="font-medium text-white">GIF</div>
+                <div className="text-sm text-white/60">Animated GIF</div>
+              </button>
+              <button
+                onClick={() => proceedWithUpload('video')}
+                className="w-full p-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-left transition-colors"
+              >
+                <div className="font-medium text-white">Video</div>
+                <div className="text-sm text-white/60">MP4, WebM, MOV</div>
+              </button>
+            </div>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setMediaTypeDialog({ show: false, catIndex: 0, itemIndex: 0, file: null })}
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
