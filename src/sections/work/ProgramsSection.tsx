@@ -7,6 +7,19 @@ import {
 } from "@/components/ui/accordion"
 import programsData from "@/data/programs.json"
 
+interface ProgramData {
+    id: string;
+    title: string;
+    description: string;
+    buttonText: string;
+    bulletPoints: string[];
+    tags: string[];
+    images: Array<{
+        src: string;
+        alt: string;
+    }>;
+}
+
 export default function ProgramsSection() {
     // Don't render anything if there are no programs
     if (programsData.programs.length === 0) {
@@ -18,7 +31,7 @@ export default function ProgramsSection() {
             <h1 className="text-[clamp(1.5rem,4vw,3rem)]">{programsData.sectionTitle}</h1>
             <div className="mt-8">
                 <Accordion type="multiple">
-                    {programsData.programs.map((program) => (
+                    {(programsData.programs as ProgramData[]).map((program: ProgramData) => (
                         <AccordionItem key={program.id} value={program.id}>
                             <AccordionTrigger className="text-[clamp(1.5rem,4vw,5rem)] font-special-gothic-expanded uppercase">
                                 {program.title}
