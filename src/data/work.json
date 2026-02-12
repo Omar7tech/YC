@@ -1,24 +1,21 @@
 {
   "categories": [
     {
-      "name": "Branding",
-      "items": [
-        {
-          "imageUrl": "/uploads/MAVE3CQ90YM9NX9VFHEJVSDQFDMNP6.png",
-          "title": "sad",
-          "link": {
-            "url": "",
-            "title": ""
-          }
-        }
-      ]
-    },
-    {
       "name": "Websites",
       "items": [
         {
-          "imageUrl": "https://picsum.photos/400/400?random=4",
+          "imageUrl": "/uploads/DR0TOTNPN3IJ4HUEK6HN076I239FW9.mp4",
+          "title": "Portfolio Site",
+          "mediaType": "video",
+          "link": {
+            "url": "https://example.com/portfolio-site",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "/uploads/5PSR5FCL4S2WL5ITPKF84OR2OUYGR4.jpg",
           "title": "E-commerce Platform",
+          "mediaType": "image",
           "link": {
             "url": "https://example.com/ecommerce-platform",
             "title": "View Project"
@@ -27,26 +24,26 @@
         {
           "imageUrl": "https://picsum.photos/400/400?random=5",
           "title": "Corporate Website",
+          "mediaType": "image",
           "link": {
             "url": "https://example.com/corporate-website",
             "title": "View Project"
           }
+        }
+      ]
+    },
+    {
+      "name": "Branding",
+      "items": [
+        {
+          "imageUrl": "/uploads/SZ79Y11B7SOPBNIM9R5WIGPS97PJWD.png",
+          "title": "",
+          "mediaType": "image"
         },
         {
-          "imageUrl": "https://picsum.photos/400/400?random=6",
-          "title": "Portfolio Site",
-          "link": {
-            "url": "https://example.com/portfolio-site",
-            "title": "View Project"
-          }
-        },
-        {
-          "imageUrl": "/uploads/LYBGBRQ8BZ8L31N5ZCEY6RCL8BUTLR.png",
+          "imageUrl": "/uploads/PFWLU3AXKJKYHCWVQSTBB34LS7RT2O.png",
           "title": "New Item",
-          "link": {
-            "url": "",
-            "title": ""
-          }
+          "mediaType": "image"
         }
       ]
     },
@@ -56,6 +53,7 @@
         {
           "imageUrl": "https://picsum.photos/400/400?random=7",
           "title": "Social Media Campaign",
+          "mediaType": "image",
           "link": {
             "url": "https://example.com/social-media-campaign",
             "title": "View Project"
@@ -64,6 +62,7 @@
         {
           "imageUrl": "https://picsum.photos/400/400?random=8",
           "title": "Video Production",
+          "mediaType": "video",
           "link": {
             "url": "https://example.com/video-production",
             "title": "View Project"
@@ -72,6 +71,7 @@
         {
           "imageUrl": "https://picsum.photos/400/400?random=9",
           "title": "Content Strategy",
+          "mediaType": "image",
           "link": {
             "url": "https://example.com/content-strategy",
             "title": "View Project"

@@ -1,20 +1,25 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import workData from '@/data/work.json'
+import workJson from '@/data/work.json'
 
 interface WorkItem {
-  imageUrl?: string
-  title?: string
+  imageUrl: string
+  title: string
+  mediaType: 'image' | 'gif' | 'video'
   link?: {
     url: string
     title: string
   }
 }
 
+// Type assertion to ensure the imported data matches our interface
+const workData = workJson as { categories: { name: string; items: WorkItem[] }[] }
+
 function OurWorksection() {
   const [activeCategory, setActiveCategory] = useState<string>(workData.categories[0].name)
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
+  const [loadedVideos, setLoadedVideos] = useState<Set<string>>(new Set())
   
   const categories = workData.categories.map(cat => cat.name)
   
@@ -25,10 +30,15 @@ function OurWorksection() {
     setLoadedImages(prev => new Set(prev).add(imageUrl))
   }
 
+  const handleVideoLoad = (videoUrl: string) => {
+    setLoadedVideos(prev => new Set(prev).add(videoUrl))
+  }
+
   const handleCategoryChange = (category: string) => {
     if (category === activeCategory) {
       // If clicking the same category, force reload by clearing cache and state
       setLoadedImages(new Set())
+      setLoadedVideos(new Set())
       // Force re-render of images to trigger reload
       setTimeout(() => {
         const images = document.querySelectorAll('#work-grid img') as NodeListOf<HTMLImageElement>
@@ -83,23 +93,37 @@ function OurWorksection() {
                     <div key={index} className="aspect-square relative overflow-hidden rounded-lg md:rounded-3xl border border-white/20 group">
                         {item.imageUrl ? (
                             <>
-                                {!loadedImages.has(item.imageUrl) && (
+                                {(item.mediaType === 'video' ? !loadedVideos.has(item.imageUrl) : !loadedImages.has(item.imageUrl)) && (
                                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm flex items-center justify-center z-20">
                                         <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                                     </div>
                                 )}
-                                <img 
-                                    src={item.imageUrl} 
-                                    alt={item.title || 'Work item'}
-                                    className={`w-full h-full object-cover transition-all duration-300 ${
-                                        loadedImages.has(item.imageUrl) ? 'opacity-100' : 'opacity-0'
-                                    }`}
-                                    onLoad={() => handleImageLoad(item.imageUrl!)}
-                                />
+                                {item.mediaType === 'video' ? (
+                                    <video
+                                        src={item.imageUrl}
+                                        autoPlay
+                                        loop
+                                        muted
+                                        playsInline
+                                        className={`w-full h-full object-cover transition-all duration-300 ${
+                                            loadedVideos.has(item.imageUrl) ? 'opacity-100' : 'opacity-0'
+                                        }`}
+                                        onLoadedData={() => handleVideoLoad(item.imageUrl!)}
+                                    />
+                                ) : (
+                                    <img 
+                                        src={item.imageUrl} 
+                                        alt={item.title || 'Work item'}
+                                        className={`w-full h-full object-cover transition-all duration-300 ${
+                                            loadedImages.has(item.imageUrl) ? 'opacity-100' : 'opacity-0'
+                                        }`}
+                                        onLoad={() => handleImageLoad(item.imageUrl!)}
+                                    />
+                                )}
                             </>
                         ) : (
                             <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                                <span className="text-white/50 text-sm">No image</span>
+                                <span className="text-white/50 text-sm">No media</span>
                             </div>
                         )}
                         {item.link && (

@@ -28,7 +28,8 @@ export async function GET(request: NextRequest) {
         await fs.access(PUBLIC_UPLOAD_PATH)
         const files = await fs.readdir(PUBLIC_UPLOAD_PATH)
         const imageFiles = files.filter(f => 
-          f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.png') || f.endsWith('.webp')
+          f.endsWith('.jpg') || f.endsWith('.jpeg') || f.endsWith('.png') || f.endsWith('.webp') || 
+          f.endsWith('.gif') || f.endsWith('.mp4') || f.endsWith('.webm') || f.endsWith('.mov')
         )
         return NextResponse.json({ images: imageFiles })
       } catch {
