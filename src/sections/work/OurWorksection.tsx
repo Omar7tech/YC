@@ -178,7 +178,7 @@ function OurWorksection() {
             ))}
         </div>
         <div id="work-grid">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-5 lg:gap-10">
                 {filteredItems.map((item, index) => (
                     <div key={index} className="aspect-square relative overflow-hidden rounded-lg md:rounded-3xl border border-white/20 group">
                         {item.imageUrl ? (
@@ -221,7 +221,7 @@ function OurWorksection() {
                                 href={item.link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="absolute top-4 right-4 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-xs font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 z-10"
+                                className="absolute top-2 md:top-4 right-2 md:right-4 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-xs font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 z-10"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {item.link.title}

@@ -8,12 +8,12 @@ function FooterIntro() {
                     <p> All This, And It</p>
                     <p> Still Feels Unclear?</p>
                 </div>
-                <div className="flex  flex-row gap-3 pt-5">
-                    <button className="px-6 py-3 border border-white/30 rounded-full text-white font-light hover:bg-white/10 transition-all duration-300 flex items-center justify-between gap-2">
+                <div className="flex  flex-row gap-2 md:gap-3 pt-5 text-sm md:text-base">
+                    <button className="px-3 md:px-6 py-3 border border-white/30 rounded-full text-white font-light hover:bg-white/10 transition-all duration-300 flex items-center justify-between gap-2">
                         Find Your Program
                         <ArrowRight className="w-4 h-4" />
                     </button>
-                    <button className="px-6 py-3 border border-white/30 rounded-full text-white font-light hover:bg-white/10 transition-all duration-300 flex items-center justify-between gap-2">
+                    <button className="px-3 md:px-6 py-3 border border-white/30 rounded-full text-white font-light hover:bg-white/10 transition-all duration-300 flex items-center justify-between gap-2">
                         Let's Talk
                         <ArrowRight className="w-4 h-4" />
                     </button>
