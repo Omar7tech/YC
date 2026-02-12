@@ -1,0 +1,161 @@
+{
+  "sectionTitle": "Our Signature Programs",
+  "programs": [
+    {
+      "id": "item-1",
+      "title": "YC-FOUNDATION",
+      "description": "For businesses that need to grow and expand",
+      "buttonText": "Let's Talk",
+      "bulletPoints": [
+        "Scale operations and brand presence with control and clarity",
+        "Optimize product and distribution channels",
+        "Drive measurable sales performance",
+        "Track, expand, and improve ROI and KPI performance",
+        "Build partnerships and growth-driven campaigns"
+      ],
+      "tags": [
+        "Brand Strategy",
+        "Target audience",
+        "Go-To-Market",
+        "Core Messaging",
+        "Creative Direction",
+        "Concept development"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/foundation1/400/400.jpg",
+          "alt": "Foundation program example 1"
+        },
+        {
+          "src": "https://picsum.photos/seed/foundation2/400/400.jpg",
+          "alt": "Foundation program example 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/foundation3/400/400.jpg",
+          "alt": "Foundation program example 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/foundation4/400/400.jpg",
+          "alt": "Foundation program example 4"
+        }
+      ]
+    },
+    {
+      "id": "item-2",
+      "title": "YC-FRAMEWORK",
+      "description": "For established businesses needing strategic structure",
+      "buttonText": "Get Started",
+      "bulletPoints": [
+        "Develop comprehensive brand architecture",
+        "Create scalable operational frameworks",
+        "Implement data-driven decision processes",
+        "Build sustainable growth models",
+        "Establish market leadership positioning"
+      ],
+      "tags": [
+        "Brand Architecture",
+        "Operational Design",
+        "Data Analytics",
+        "Growth Strategy",
+        "Market Positioning",
+        "Process Optimization"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/framework1/400/400.jpg",
+          "alt": "Framework program example 1"
+        },
+        {
+          "src": "https://picsum.photos/seed/framework2/400/400.jpg",
+          "alt": "Framework program example 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/framework3/400/400.jpg",
+          "alt": "Framework program example 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/framework4/400/400.jpg",
+          "alt": "Framework program example 4"
+        }
+      ]
+    },
+    {
+      "id": "item-3",
+      "title": "YC-REPOSITION",
+      "description": "For brands needing market repositioning and revitalization",
+      "buttonText": "Reposition Now",
+      "bulletPoints": [
+        "Analyze current market position and opportunities",
+        "Develop new brand positioning strategy",
+        "Create compelling brand narratives",
+        "Implement repositioning campaigns",
+        "Measure brand perception changes"
+      ],
+      "tags": [
+        "Market Research",
+        "Brand Positioning",
+        "Narrative Design",
+        "Campaign Strategy",
+        "Brand Perception",
+        "Competitive Analysis"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/reposition1/400/400.jpg",
+          "alt": "Reposition program example 1"
+        },
+        {
+          "src": "https://picsum.photos/seed/reposition2/400/400.jpg",
+          "alt": "Reposition program example 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/reposition3/400/400.jpg",
+          "alt": "Reposition program example 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/reposition4/400/400.jpg",
+          "alt": "Reposition program example 4"
+        }
+      ]
+    },
+    {
+      "id": "item-4",
+      "title": "YC-SCALE",
+      "description": "For businesses ready to scale operations and impact",
+      "buttonText": "Scale With Us",
+      "bulletPoints": [
+        "Scale operations and brand presence with control and clarity",
+        "Optimize product and distribution channels",
+        "Drive measurable sales performance",
+        "Track, expand, and improve ROI and KPI performance",
+        "Build partnerships and growth-driven campaigns"
+      ],
+      "tags": [
+        "Scaling Strategy",
+        "Distribution Optimization",
+        "Sales Performance",
+        "ROI Management",
+        "Partnership Development",
+        "Growth Campaigns"
+      ],
+      "images": [
+        {
+          "src": "https://picsum.photos/seed/scale1/400/400.jpg",
+          "alt": "Scale program example 1"
+        },
+        {
+          "src": "https://picsum.photos/seed/scale2/400/400.jpg",
+          "alt": "Scale program example 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/scale3/400/400.jpg",
+          "alt": "Scale program example 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/scale4/400/400.jpg",
+          "alt": "Scale program example 4"
+        }
+      ]
+    }
+  ]
+}
