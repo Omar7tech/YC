@@ -1,3 +1,83 @@
 {
-  "categories": []
+  "categories": [
+    {
+      "name": "Websites",
+      "items": [
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=1",
+          "title": "Portfolio Site",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/portfolio-site",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=2",
+          "title": "E-commerce Platform",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/ecommerce-platform",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=3",
+          "title": "Corporate Website",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/corporate-website",
+            "title": "View Project"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Branding",
+      "items": [
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=4",
+          "title": "Brand Identity",
+          "mediaType": "image"
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=5",
+          "title": "Logo Design",
+          "mediaType": "image"
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=6",
+          "title": "Social Media Campaign",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/social-media-campaign",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "/vid.mp4",
+          "title": "Video Production",
+          "mediaType": "video",
+          "link": {
+            "url": "https://example.com/video-production",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=8",
+          "title": "Content Strategy",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/content-strategy",
+            "title": "View Project"
+          }
+        }
+      ]
+    }
+  ]
 }

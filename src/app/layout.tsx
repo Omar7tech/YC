@@ -6,6 +6,9 @@ import {
   Special_Gothic_Expanded_One,
 } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/Nav";
+import FooterIntro from "@/components/FooterIntro";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -50,8 +53,11 @@ export default function RootLayout({
       lang="en"
       className={`${bricolageGrotesque.variable} ${geistSans.variable} ${geistMono.variable} ${specialGothicExpanded.variable}`}
     >
-      <body className="antialiased" suppressHydrationWarning>
+      <body className="antialiased max-w-[2000px] mx-auto" suppressHydrationWarning>
+        <Nav />
         {children}
+        <FooterIntro />
+        <Footer />
       </body>
     </html>
   );
