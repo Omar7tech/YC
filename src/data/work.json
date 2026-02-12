@@ -1,0 +1,83 @@
+{
+  "categories": [
+    {
+      "name": "Branding",
+      "items": [
+        {
+          "imageUrl": "/uploads/MAVE3CQ90YM9NX9VFHEJVSDQFDMNP6.png",
+          "title": "sad",
+          "link": {
+            "url": "",
+            "title": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Websites",
+      "items": [
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=4",
+          "title": "E-commerce Platform",
+          "link": {
+            "url": "https://example.com/ecommerce-platform",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=5",
+          "title": "Corporate Website",
+          "link": {
+            "url": "https://example.com/corporate-website",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=6",
+          "title": "Portfolio Site",
+          "link": {
+            "url": "https://example.com/portfolio-site",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "/uploads/LYBGBRQ8BZ8L31N5ZCEY6RCL8BUTLR.png",
+          "title": "New Item",
+          "link": {
+            "url": "",
+            "title": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "items": [
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=7",
+          "title": "Social Media Campaign",
+          "link": {
+            "url": "https://example.com/social-media-campaign",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=8",
+          "title": "Video Production",
+          "link": {
+            "url": "https://example.com/video-production",
+            "title": "View Project"
+          }
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=9",
+          "title": "Content Strategy",
+          "link": {
+            "url": "https://example.com/content-strategy",
+            "title": "View Project"
+          }
+        }
+      ]
+    }
+  ]
+}

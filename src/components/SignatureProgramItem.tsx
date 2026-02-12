@@ -1,5 +1,7 @@
+'use client'
+
 import { ArrowRight } from "lucide-react"
-import Image from "next/image"
+import ImageWithLoader from "./ImageWithLoader"
 
 interface ProgramData {
   id: string;
@@ -19,7 +21,7 @@ interface SignatureProgramItemProps {
 }
 
 function SignatureProgramItem({ program }: SignatureProgramItemProps) {
-  const whatsappUrl = `https://wa.me/96170075077?text=${encodeURIComponent(`I want to know more about the ${program.title}`)}`;
+  const whatsappUrl = `https://wa.me/96170075077?text=${encodeURIComponent(`I want to know more about ${program.title}`)}`;
   
   return (
     <div className="py-10 px-5">
@@ -56,19 +58,7 @@ function SignatureProgramItem({ program }: SignatureProgramItemProps) {
             </div>
         </div>
         <div id="images">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-10 mt-6 md:mt-8">
-                {program.images.map((image, index) => (
-                    <div key={index} className="aspect-square relative overflow-hidden rounded-lg md:rounded-3xl border border-white/20">
-                        <Image 
-                            src={image.src} 
-                            alt={image.alt}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    </div>
-                ))}
-            </div>
+            <ImageWithLoader images={program.images} />
         </div>
     </div>
   )

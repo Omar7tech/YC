@@ -23,20 +23,16 @@
       ],
       "images": [
         {
-          "src": "https://picsum.photos/seed/foundation1/400/400.jpg",
-          "alt": "Foundation program example 1"
-        },
-        {
-          "src": "https://picsum.photos/seed/foundation2/400/400.jpg",
-          "alt": "Foundation program example 2"
-        },
-        {
           "src": "https://picsum.photos/seed/foundation3/400/400.jpg",
           "alt": "Foundation program example 3"
         },
         {
           "src": "https://picsum.photos/seed/foundation4/400/400.jpg",
           "alt": "Foundation program example 4"
+        },
+        {
+          "src": "/uploads/VXOQIK4B8XF9GZQ936ATFQTN7E6B3Z.png",
+          "alt": "Screenshot 2026-02-09 124346.png"
         }
       ]
     },
@@ -48,7 +44,7 @@
       "bulletPoints": [
         "Develop comprehensive brand architecture",
         "Create scalable operational frameworks",
-        "Implement data-driven decision processes",
+        "Implement data-driven decision processesAS",
         "Build sustainable growth models",
         "Establish market leadership positioning"
       ],
@@ -58,7 +54,7 @@
         "Data Analytics",
         "Growth Strategy",
         "Market Positioning",
-        "Process Optimization"
+        "Process Optimizationشسي"
       ],
       "images": [
         {
