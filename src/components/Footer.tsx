@@ -16,7 +16,7 @@ function Footer() {
                     this is work
                 </FooterCard>
                 <FooterCard title="Contact">
-                    this is contact
+                    this is contact from latest push
                 </FooterCard>
             </div>
             <div className='font-extralight text-white/50'>
