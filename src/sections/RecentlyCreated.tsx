@@ -12,12 +12,12 @@ const projectData: ProjectCard[] = [
 ]
 
 const layout = [
-  { index: 0, colSpan: 'col-span-1' },
-  { index: 1, colSpan: 'col-span-1' },
-  { index: 2, colSpan: 'col-span-5' },
-  { index: 5, colSpan: 'col-span-1' },
-  { index: 4, colSpan: 'col-span-1' },
-  { index: 3, colSpan: 'col-span-5' }
+  { index: 0, colSpan: 'col-span-2 md:col-span-1' },
+  { index: 1, colSpan: 'col-span-2 md:col-span-1' },
+  { index: 2, colSpan: 'col-span-3 md:col-span-5' },
+  { index: 5, colSpan: 'col-span-2 md:col-span-1' },
+  { index: 4, colSpan: 'col-span-2 md:col-span-1' },
+  { index: 3, colSpan: 'col-span-3 md:col-span-5' }
 ]
 
 function ProjectTile({ project, colSpan }: { project: ProjectCard; colSpan: string }) {

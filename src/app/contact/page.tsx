@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import DecryptedText from "@/components/DecryptedText";
 import AnimatedDescription from "@/components/AnimatedDescription";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -13,22 +12,9 @@ export default function Contact() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-5">
           <h1 className="font-bold text-[clamp(2rem,4vw,4rem)] leading-none">
-            <DecryptedText
-              text="Let's Create"
-              animateOn="view"
-              revealDirection="start"
-              sequential
-              useOriginalCharsOnly={false}
-            />
-          </h1>
-          <h1 className="font-bold text-[clamp(2rem,4vw,4rem)] leading-none">
-            <DecryptedText
-              text="Something Amazing"
-              animateOn="view"
-              revealDirection="start"
-              sequential
-              useOriginalCharsOnly={false}
-            />
+            Let's Create
+            <br />
+            Something Amazing
           </h1>
           <div className="space-y-5 max-w-[600px]">
             <AnimatedDescription

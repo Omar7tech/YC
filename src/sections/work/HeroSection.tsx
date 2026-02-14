@@ -1,5 +1,3 @@
-import DecryptedText from "@/components/DecryptedText";
-
 function HeroSection() {
     return (
         <div className="relative px-5 md:px-10 lg:px-20">
@@ -18,22 +16,10 @@ function HeroSection() {
             <div className="relative space-y-5 leading-none">
                 <div className="text-[clamp(2rem,8vw,9rem)] font-bold">
                     <h1>
-                        <DecryptedText
-                            text="Work, Built Around"
-                            animateOn="view"
-                            revealDirection="start"
-                            sequential
-                            useOriginalCharsOnly={false}
-                        />
+                        Work, Built Around
                     </h1>
                     <h1>
-                        <DecryptedText
-                            text="Business Stages."
-                            animateOn="view"
-                            revealDirection="start"
-                            sequential
-                            useOriginalCharsOnly={false}
-                        />
+                        Business Stages.
                     </h1>
                 </div>
                 <div className="text-[clamp(1rem,4vw,2.5rem)] font-light">
