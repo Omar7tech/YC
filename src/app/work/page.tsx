@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import HeroSection from "@/sections/work/HeroSection"
 import VideoSection from "@/sections/work/VideoSection"
 import ProgramsSection from "@/sections/work/ProgramsSection"
@@ -14,7 +15,11 @@ function page() {
         <div id="hero" className="scroll-mt-32"><HeroSection/></div>
         <div id="video" className="scroll-mt-32"><VideoSection/></div>
         <div id="programs" className="scroll-mt-32"><ProgramsSection/></div>
-        <div id="our-work" className="scroll-mt-32"><OurWorksection/></div>
+        <div id="our-work" className="scroll-mt-32">
+            <Suspense fallback={<div>Loading work...</div>}>
+                <OurWorksection/>
+            </Suspense>
+        </div>
     </div>
   )
 }
