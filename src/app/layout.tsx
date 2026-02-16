@@ -40,6 +40,7 @@ const specialGothicExpanded = Special_Gothic_Expanded_One({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lightsteelblue-herring-546193.hostingersite.com'),
   title: "Yamen Creates",
   description: "Art + Strategy + Psychology = Storytelling",
   authors: [{ name: "Omar Abi Farraj", url: "https://github.com/Omar7tech" }, { name: "Yamen Creates", url: "https://yamencreates.com" }],
