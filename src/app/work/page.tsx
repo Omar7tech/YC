@@ -6,8 +6,8 @@ import ProgramsSection from "@/sections/work/ProgramsSection"
 import OurWorksection from "@/sections/work/OurWorksection"
 
 export const metadata: Metadata = {
-  title: "Yamen Creates - Work",
-  description: "Explore our signature programs: YC-FOUNDATION, YC-FRAMEWORK, YC-REPOSITION, YC-SCALE. See how we build brands grounded in clarity and designed to scale.",
+  title: "Yamen Creates - Our Work & Signature Branding Programs",
+  description: "Explore our programs: YC-FOUNDATION, YC-FRAMEWORK, YC-REPOSITION, YC-SCALE. See how we build brands grounded in clarity and designed to scale.",
 };
 
 function page() {

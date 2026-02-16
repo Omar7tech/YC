@@ -9,7 +9,7 @@ import RecentlyCreated from "@/sections/RecentlyCreated";
 import Clients from "@/sections/Clients";
 
 export const metadata: Metadata = {
-  title: "Yamen Creates - Home",
+  title: "Yamen Creates - Creative Agency for Branding & Digital Experiences",
   description: "Transform your brand with Yamen Creates. We specialize in branding, digital experiences, and strategic growth for startups and businesses. Art + Strategy + Psychology = Storytelling.",
 };
 

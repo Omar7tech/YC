@@ -4,8 +4,25 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Yamen Creates - Contact",
+  title: "Yamen Creates - Contact Us for Branding & Creative Services",
   description: "Get in touch with Yamen Creates for branding, creative services, and project consultations. Reach out via email, phone, or form to start your amazing project.",
+  keywords: ["contact", "creative agency", "branding services", "project inquiry", "startups", "business consultation"],
+  openGraph: {
+    title: "Yamen Creates - Contact Us",
+    description: "Ready to bring your vision to life? Contact Yamen Creates for branding and digital experiences.",
+    url: "https://yamencreates.com/contact",
+    siteName: "Yamen Creates",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yamen Creates - Contact Us",
+    description: "Ready to bring your vision to life? Contact Yamen Creates for branding and digital experiences.",
+  },
+  alternates: {
+    canonical: "https://yamencreates.com/contact",
+  },
 };
 
 export default function Contact() {
