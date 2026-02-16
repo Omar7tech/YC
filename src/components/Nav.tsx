@@ -33,7 +33,7 @@ function Nav() {
     };
 
     return (
-        <nav className="mx-auto fixed z-50 top-0 left-0 right-0 flex content-center justify-between items-center p-5 max-w-[2000px] px-5 md:px-10 lg:px-15 gap-3">
+        <nav className="mx-auto fixed z-100 top-0 left-0 right-0 flex content-center justify-between items-center p-5 max-w-[2000px] px-5 md:px-10 lg:px-15 gap-3">
             <div className="font-light text-2xl border-solid border-white/[.145] border-2 rounded-full px-4 py-3 backdrop-blur-sm bg-white/10 transition-all duration-300 hover:bg-gray-100 hover:border-gray-300 hover:scale-105 cursor-pointer group">
                 <Image 
                     src={logo} 
@@ -63,7 +63,7 @@ function Nav() {
             </div>
 
             {/* Mobile Burger Menu - Capsule Style */}
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="sm:hidden font-light text-2xl border-solid border-white/[.145] border-2 rounded-full px-4 py-3 backdrop-blur-sm bg-white/5 transition-all duration-300 hover:bg-white/10 hover:border-white/5 hover:text-zinc-300 hover:scale-105 cursor-pointer">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="sm:hidden font-light text-2xl border-solid border-white/[.145] border-2 rounded-full px-4 py-3 backdrop-blur-sm bg-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/5 hover:text-zinc-300 hover:scale-105 cursor-pointer">
                 <motion.div animate={{ rotate: mobileMenuOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                     {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </motion.div>
@@ -77,17 +77,18 @@ function Nav() {
                             onClick={() => setMobileMenuOpen(false)}
                         />
                         <motion.div
-                            className="fixed top-22 left-5 right-5 z-40 flex flex-col space-y-4"
+                            className="fixed top-22 left-1/2 transform -translate-x-1/2 w-[90%] h-fit overflow-hidden bg-black/20 backdrop-blur-md flex flex-col space-y-4 p-5 rounded-2xl border border-white/10 z-40"
                             variants={containerVariants}
-                            initial="hidden"
-                            animate="show"
-                            exit="hidden"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ type: "tween", damping: 25, stiffness: 300 }}
                             onClick={(e) => e.stopPropagation()}
                         >
                             {links.map((link) => (
                                 <motion.div key={link.href} variants={itemVariants}>
                                     <Link
-                                        className="w-full font-base text-3xl border-solid border-white/[.145] border-2 rounded-full px-6 py-3 backdrop-blur-xl bg-white/10 transition-all duration-300 hover:bg-white/20 hover:border-white/5 hover:text-zinc-300 hover:scale-105 text-left justify-start flex"
+                                        className="w-full font-base text-3xl border-solid border-white/[.145] border-2 rounded-full px-6 py-3 backdrop-blur-sm bg-white/10 transition-all duration-300 hover:bg-white/20 hover:border-white/5 hover:text-zinc-300 hover:scale-105 text-left justify-start flex"
                                         href={link.href}
                                         onClick={() => setMobileMenuOpen(false)}
                                     >

@@ -27,7 +27,7 @@ function SignatureProgramItem({ program }: SignatureProgramItemProps) {
     <div className="py-10 px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 md:gap-10">
             <div id="firstgrid" className="flex flex-col justify-between min-h-0 space-y-5 md:col-span-1">
-                <h1 className="text-[clamp(1.25rem,4vw,2rem)] font-bold">
+                <h1 className="text-[clamp(1.25rem,4vw,2.5rem)] font-bold">
                     {program.description}
                 </h1>
                 <a 

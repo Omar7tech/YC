@@ -1,3 +1,6 @@
+'use client'
+import { motion } from 'framer-motion'
+
 function HeroSection() {
     return (
         <div className="relative px-5 md:px-10 lg:px-20">
@@ -22,11 +25,17 @@ function HeroSection() {
                         Business Stages.
                     </h1>
                 </div>
-                <div className="text-[clamp(1rem,4vw,2.5rem)] font-light">
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: true }}
+                    className="text-[clamp(1rem,4vw,2.5rem)] font-light"
+                >
                     <p>See how we partner with leadership</p>
                     <p>teams to build brands grounded in</p>
                     <p>clarity and designed to scale.</p>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

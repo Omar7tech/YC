@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 
 const workJson = {
   "categories": [
@@ -137,7 +138,7 @@ function OurWorksection() {
       setTimeout(() => {
         const images = document.querySelectorAll('#work-grid img') as NodeListOf<HTMLImageElement>
         images.forEach(img => {
-          const newImg = new Image()
+          const newImg = document.createElement('img') as HTMLImageElement
           newImg.src = img.src
           newImg.onload = () => {
             const imageUrl = img.getAttribute('src')
@@ -156,7 +157,7 @@ function OurWorksection() {
     const firstCategoryItems = workData.categories[0]?.items || []
     firstCategoryItems.forEach(item => {
       if (item.imageUrl) {
-        const img = new Image()
+        const img = document.createElement('img') as HTMLImageElement
         img.src = item.imageUrl
         img.onload = () => handleImageLoad(item.imageUrl!)
       }
@@ -213,20 +214,17 @@ function OurWorksection() {
                       onLoadedData={() => handleVideoLoad(item.imageUrl!)}
                     />
                   ) : (
-                    <img
+                    <Image
+                      fill
                       src={item.imageUrl}
                       alt={item.title || 'Work item'}
-                      className={`w-full h-full object-cover transition-all duration-300 ${loadedImages.has(item.imageUrl) ? 'opacity-100' : 'opacity-0'
+                      className={`object-cover transition-all duration-300 ${loadedImages.has(item.imageUrl) ? 'opacity-100' : 'opacity-0'
                         }`}
-                      onLoad={() => handleImageLoad(item.imageUrl!)}
+                      onLoadingComplete={() => handleImageLoad(item.imageUrl!)}
                     />
                   )}
                 </>
-              ) : (
-                <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                  <span className="text-white/50 text-sm">No media</span>
-                </div>
-              )}
+              ) : null}
               {item.link && (
                 <a
                   href={item.link.url}
