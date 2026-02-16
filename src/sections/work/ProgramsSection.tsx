@@ -13,7 +13,7 @@ const programsData = {
       "id": "yc-foundation",
       "title": "YC-FOUNDATION",
       "description": "For businesses that need to start.",
-      "buttonText": "Let's Talk",
+      "buttonText": "Start with us",
       "bulletPoints": [
         "Shift from an operating business to a clearly defined brand",
         "Establish consistent brand communication, purpose, and direction",
@@ -22,16 +22,28 @@ const programsData = {
         "Build a confident, aligned digital presence"
       ],
       "tags": [
-        "Business Audit",
-        "Market Opportunity",
         "Brand Strategy",
-        "Visual identity",
-        "Verbal identity",
+        "Target audience",
+        "Go-To-Market",
         "Core Messaging",
+        "Creative Direction Brand Strategy",
+        "Concept development"
       ],
       "images": [
         {
-          "src": "/uploads/GFNEHUJWCA0U53M8COSE19YVHCEDU2.png",
+          "src": "https://picsum.photos/400/400?random=8",
+          "alt": "YC Foundation Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=9",
+          "alt": "YC Foundation Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=10",
+          "alt": "YC Foundation Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=11",
           "alt": "YC Foundation Program"
         }
       ]
@@ -40,7 +52,7 @@ const programsData = {
       "id": "yc-framework",
       "title": "YC-FRAMEWORK",
       "description": "For businesses that need to structure.",
-      "buttonText": "Let's Talk",
+      "buttonText": "Structure with us",
       "bulletPoints": [
         "Shift from an operating business to a clearly defined brand",
         "Establish consistent brand communication, purpose, and direction",
@@ -49,17 +61,28 @@ const programsData = {
         "Build a confident, aligned digital presence",
       ],
       "tags": [
-        "Marketing strategy",
-        "Creative Direction",
-        "Brand Audit",
-        "Rebranding",
-        "Website",
-        "Campaigns"
-
+        "Business Audit",
+        "Visual identity",
+        "Verbal identity",
+        "Brand Strategy",
+        "Market Opportunity",
+        "Core Messaging"
       ],
       "images": [
         {
-          "src": "/uploads/3CNS2YT9ZXVSHIE822LWYXEYH9M5LU.svg",
+          "src": "https://picsum.photos/400/400?random=12",
+          "alt": "YC Framework Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=13",
+          "alt": "YC Framework Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=14",
+          "alt": "YC Framework Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=15",
           "alt": "YC Framework Program"
         }
       ]
@@ -68,7 +91,7 @@ const programsData = {
       "id": "yc-reposition",
       "title": "YC-REPOSITION",
       "description": "For businesses that need to realign and evolve.",
-      "buttonText": "Let's Talk",
+      "buttonText": "Reposition with us",
       "bulletPoints": [
         "Optimize and rationalize existing brand assets",
         "Reposition the brand within the correct market context",
@@ -77,13 +100,28 @@ const programsData = {
         "Restructure and optimize the content ecosystem"
       ],
       "tags": [
-        "Repositioning",
-        "Marketing Strategy",
+        "Marketing strategy",
+        "Website",
+        "Creative Direction",
+        "Campaigns",
+        "Brand Audit",
         "Rebranding"
       ],
       "images": [
         {
-          "src": "/uploads/5PSR5FCL4S2WL5ITPKF84OR2OUYGR4.jpg",
+          "src": "https://picsum.photos/400/400?random=16",
+          "alt": "YC Reposition Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=17",
+          "alt": "YC Reposition Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=18",
+          "alt": "YC Reposition Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=19",
           "alt": "YC Reposition Program"
         }
       ]
@@ -92,7 +130,7 @@ const programsData = {
       "id": "yc-scale",
       "title": "YC-SCALE",
       "description": "For businesses that need to grow and expand.",
-      "buttonText": "Let's Talk",
+      "buttonText": "Scale with us",
       "bulletPoints": [
         "Scale operations and brand presence with control and clarity",
         "Optimize product and distribution channels",
@@ -101,13 +139,29 @@ const programsData = {
         "Build partnerships and growth-driven campaigns"
       ],
       "tags": [
-        "Scale",
-        "Growth",
-        "Performance"
+        "Content Creation",
+        "Production",
+        "PR",
+        "Media",
+        "ART Direction",
+        "Sales Channel Development",
+        "Performance-led campaigns"
       ],
       "images": [
         {
-          "src": "/uploads/SZ79Y11B7SOPBNIM9R5WIGPS97PJWD.png",
+          "src": "https://picsum.photos/400/400?random=20",
+          "alt": "YC Scale Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=21",
+          "alt": "YC Scale Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=22",
+          "alt": "YC Scale Program"
+        },
+        {
+          "src": "https://picsum.photos/400/400?random=23",
           "alt": "YC Scale Program"
         }
       ]
