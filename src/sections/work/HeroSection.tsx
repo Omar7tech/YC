@@ -1,5 +1,4 @@
-'use client'
-import { motion } from 'framer-motion'
+import AnimatedDescription from "@/components/AnimatedDescription"
 
 function HeroSection() {
     return (
@@ -20,22 +19,24 @@ function HeroSection() {
                 <div className="text-[clamp(2rem,8vw,9rem)] font-bold">
                     <h1>
                         Work, Built Around
-                    </h1>
-                    <h1>
+                        <br />
                         Business Stages.
                     </h1>
                 </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    className="text-[clamp(1rem,4vw,2.5rem)] font-light"
-                >
-                    <p>See how we partner with leadership</p>
-                    <p>teams to build brands grounded in</p>
-                    <p>clarity and designed to scale.</p>
-                </motion.div>
+                <div className="text-[clamp(1rem,4vw,2.5rem)] font-light">
+                    <AnimatedDescription
+                        text="See how we partner with leadership"
+                        delay={0.2}
+                    />
+                    <AnimatedDescription
+                        text="teams to build brands grounded in"
+                        delay={0.4}
+                    />
+                    <AnimatedDescription
+                        text="clarity and designed to scale."
+                        delay={0.6}
+                    />
+                </div>
             </div>
         </div>
     )

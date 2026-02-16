@@ -7,19 +7,20 @@ import OurWorksection from "@/sections/work/OurWorksection"
 
 export const metadata: Metadata = {
   title: "Yamen Creates - Work",
+  description: "Explore our signature programs: YC-FOUNDATION, YC-FRAMEWORK, YC-REPOSITION, YC-SCALE. See how we build brands grounded in clarity and designed to scale.",
 };
 
 function page() {
   return (
     <div className="mt-32 space-y-8">
-        <div id="hero" className="scroll-mt-32"><HeroSection/></div>
-        <div id="video" className="scroll-mt-32"><VideoSection/></div>
-        <div id="programs" className="scroll-mt-32"><ProgramsSection/></div>
-        <div id="our-work" className="scroll-mt-32">
+        <section id="hero" className="scroll-mt-32"><HeroSection/></section>
+        <section id="video" className="scroll-mt-32"><VideoSection/></section>
+        <section id="programs" className="scroll-mt-32"><ProgramsSection/></section>
+        <section id="our-work" className="scroll-mt-32">
             <Suspense fallback={<div>Loading work...</div>}>
                 <OurWorksection/>
             </Suspense>
-        </div>
+        </section>
     </div>
   )
 }

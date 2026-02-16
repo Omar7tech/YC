@@ -1,9 +1,35 @@
 import Image from "next/image"
+import Script from "next/script"
 
 
 function HowWeWork() {
+    const howWeWorkJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How We Work",
+        "description": "We work through four clearly defined programs, each built around a specific business need. We begin by understanding where the business is and what it needs next.",
+        "articleSection": "Process",
+        "author": {
+            "@type": "Organization",
+            "name": "Yamen Creates"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Yamen Creates",
+            "url": "https://yamencreates.com"
+        }
+    };
+
     return (
         <div className="px-5 md:px-10 lg:px-20">
+            <Script
+                id="how-we-work-jsonld"
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(howWeWorkJsonLd)
+                }}
+            />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div
                     id="title-illustration"
@@ -18,7 +44,7 @@ function HowWeWork() {
                     <div className="flex items-center justify-center min-h-0">
                         <Image
                             src="/illustration1.png"
-                            alt=""
+                            alt="Illustration representing our structured approach to business growth"
                             width={300}
                             height={300}
                             className="transition-all duration-500 hover:scale-115 hover:drop-shadow-2xl hover:shadow-purple-500/25"

@@ -1,11 +1,36 @@
 'use client'
 import Image from "next/image"
 import { motion } from "framer-motion"
+import Script from "next/script"
 
 function WeBelieveSection() {
+    const articleJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "We Believe",
+        "description": "Every business starts with an idea—but only becomes a brand through clarity, structure, and intent. We transform raw concepts into market-ready businesses.",
+        "articleSection": "Philosophy",
+        "author": {
+            "@type": "Organization",
+            "name": "Yamen Creates"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Yamen Creates",
+            "url": "https://yamencreates.com"
+        }
+    };
 
     return (
         <>
+            <Script
+                id="we-believe-jsonld"
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(articleJsonLd)
+                }}
+            />
             <div className="px-5 md:px-10 lg:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div
@@ -30,7 +55,7 @@ function WeBelieveSection() {
                         >
                             <Image
                                 src="/jam.png"
-                                alt=""
+                                alt="Jam jar illustration representing creativity and ideas"
                                 width={100}
                                 height={100}
                                 className="transition-all duration-500 hover:scale-115 hover:drop-shadow-2xl hover:shadow-purple-500/25"
@@ -45,7 +70,7 @@ function WeBelieveSection() {
                         >
                             <Image
                                 src="/illustration2.png"
-                                alt=""
+                                alt="Abstract illustration of business transformation and growth"
                                 width={300}
                                 height={300}
                                 className="transition-all duration-500 hover:scale-115 hover:drop-shadow-2xl hover:shadow-purple-500/25"
@@ -102,16 +127,10 @@ function WeBelieveSection() {
                             brands that connect emotionally, operate
                             commercially, and endure over time.
                         </motion.p>
-
                     </motion.div>
-
                 </div>
-
             </div>
-
-
         </>
-
     )
 
 }

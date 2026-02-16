@@ -26,8 +26,8 @@ function SignatureProgramItem({ program }: SignatureProgramItemProps) {
   return (
     <div className="py-10 px-5">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-5 md:gap-10">
-            <div id="firstgrid" className="flex flex-col justify-between min-h-0 space-y-5 md:col-span-1">
-                <h1 className="text-[clamp(1.25rem,4vw,2.5rem)] font-bold">
+            <div id="firstgrid" className="flex flex-col justify-between min-h-0 space-y-5 md:col-span-1 max-w-xl">
+                <h1 className="text-[clamp(1.25rem,4vw,2.5rem)] font-bold leading-none">
                     {program.description}
                 </h1>
                 <a 
@@ -41,7 +41,7 @@ function SignatureProgramItem({ program }: SignatureProgramItemProps) {
                 </a>
             </div>
             <div id="bullets" className="md:col-span-1 text-[clamp(0.875rem,1.2vw,1.3rem)] font-extralight">
-                <ul className="list-disc list-inside space-y-1 md:space-y-2">
+                <ul className="list-disc marker:text-xs  space-y-1 md:space-y-2 list-inside">
                     {program.bulletPoints.map((point, index) => (
                         <li key={index}>{point}</li>
                     ))}

@@ -3,11 +3,32 @@ import MagicBento from "@/components/MagicBento"
 import StarBorder from "@/components/StarBorder";
 import { ArrowRight } from "lucide-react";
 import AnimatedDescription from "@/components/AnimatedDescription";
+import Script from "next/script";
 
 function HeroSection() {
-  
+  const aboutPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Yamen Creates",
+    "description": "We work with founders, CEOs, and leadership teams to define core business ideas and build brand, marketing, content, and digital systems for growth, complexity, and scale.",
+    "url": "https://yamencreates.com/#hero",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Yamen Creates",
+      "description": "Strategic partner combining art, strategy, and psychology for compelling brand storytelling."
+    }
+  };
+
   return (
     <div className="px-5 md:px-10 lg:px-20">
+      <Script
+        id="hero-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aboutPageJsonLd)
+        }}
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1 md:pt-8">
         <div className="space-y-5">
           <div>

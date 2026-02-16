@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import {
   Geist,
   Geist_Mono,
@@ -9,6 +9,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import FooterIntro from "@/components/FooterIntro";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -41,6 +42,17 @@ const specialGothicExpanded = Special_Gothic_Expanded_One({
 export const metadata: Metadata = {
   title: "Yamen Creates",
   description: "Art + Strategy + Psychology = Storytelling",
+  authors: [{ name: "Omar Abi Farraj", url: "https://github.com/Omar7tech" }, { name: "Yamen Creates", url: "https://yamencreates.com" }],
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'dark' as const,
+  themeColor: '#2b2b2b',
+  initialScale: 1,
+  width: 'device-width',
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -54,10 +66,38 @@ export default function RootLayout({
       className={`${bricolageGrotesque.variable} ${geistSans.variable} ${geistMono.variable} ${specialGothicExpanded.variable}`}
     >
       <body className="antialiased max-w-[2000px] mx-auto" suppressHydrationWarning>
-        <Nav />
-        {children}
+        <header>
+          <Nav />
+        </header>
+        <main id="main-content">
+          {children}
+        </main>
         <FooterIntro />
         <Footer />
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Yamen Creates",
+              "url": "https://yamencreates.com",
+              "logo": "https://yamencreates.com/yamenlogo.svg",
+              "sameAs": [
+                "https://www.instagram.com/yamencreates/",
+                "https://www.linkedin.com/company/yamen-creates/"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+96170075077",
+                "contactType": "customer service",
+                "email": "info@yamencreates.com"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );

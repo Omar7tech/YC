@@ -1,14 +1,81 @@
 import { Metadata } from "next";
 import AnimatedDescription from "@/components/AnimatedDescription";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Yamen Creates - Contact",
+  description: "Get in touch with Yamen Creates for branding, creative services, and project consultations. Reach out via email, phone, or form to start your amazing project.",
 };
 
 export default function Contact() {
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Yamen Creates",
+    "description": "Contact page for Yamen Creates, a creative agency specializing in branding and digital experiences.",
+    "url": "https://yamencreates.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Yamen Creates",
+      "url": "https://yamencreates.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+96170075077",
+        "email": "info@yamencreates.com",
+        "contactType": "customer service",
+        "areaServed": "Global",
+        "availableLanguage": ["English", "Arabic"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Aley",
+          "addressRegion": "Mount Lebanon",
+          "addressCountry": "LB"
+        }
+      },
+      "sameAs": [
+        "https://www.instagram.com/yamencreates/",
+        "https://www.linkedin.com/company/yamen-creates/"
+      ]
+    },
+    "potentialAction": [
+      {
+        "@type": "CommunicateAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "mailto:info@yamencreates.com?subject=Project Inquiry",
+          "inLanguage": "en-US",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        }
+      },
+      {
+        "@type": "CommunicateAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "tel:+96170075077",
+          "inLanguage": "en-US",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        }
+      }
+    ]
+  };
+
   return (
     <div className="mt-32 px-5 md:px-10 lg:px-20 space-y-20">
+      <Script
+        id="contact-jsonld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactJsonLd)
+        }}
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-5">
           <h1 className="font-bold text-[clamp(2rem,4vw,4rem)] leading-none">
@@ -29,15 +96,15 @@ export default function Contact() {
           <div className="space-y-4 pt-5">
             <div className="flex items-center space-x-3">
               <Mail className="w-5 h-5 text-white/70" />
-              <p className="text-white/80">hello@yamencreates.com</p>
+              <p className="text-white/80">info@yamencreates.com</p>
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="w-5 h-5 text-white/70" />
-              <p className="text-white/80">+1 (555) 123-4567</p>
+              <p className="text-white/80">+961 7007 5077</p>
             </div>
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5 text-white/70" />
-              <p className="text-white/80">New York, NY</p>
+              <p className="text-white/80">Aley, Mount Lebanon, Lebanon</p>
             </div>
           </div>
         </div>

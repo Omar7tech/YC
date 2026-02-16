@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Script from "next/script"
 
 const programsData = {
   "sectionTitle": "Our Signature Programs",
@@ -188,8 +189,92 @@ export default function ProgramsSection() {
     return null
   }
 
+  const programsJsonLd = programsData.programs.map((program, index) => ({
+    "@context": "https://schema.org",
+    "@type": ["Service", "CreativeWork"],
+    "@id": `https://yamencreates.com/work#${program.id}`,
+    "name": program.title,
+    "description": `${program.description} ${program.bulletPoints.join('. ')}`,
+    "provider": {
+      "@type": "Organization",
+      "name": "Yamen Creates",
+      "url": "https://yamencreates.com",
+      "sameAs": [
+        "https://www.instagram.com/yamencreates/",
+        "https://www.linkedin.com/company/yamen-creates/"
+      ]
+    },
+    "serviceType": program.tags.join(', '),
+    "keywords": program.tags.join(', '),
+    "areaServed": "Global",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${program.title} Services`,
+      "itemListElement": program.tags.map((tag, tagIndex) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": tag,
+          "description": `Part of ${program.title} program`
+        }
+      }))
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://yamencreates.com/work#${program.id}`,
+      "price": "Contact for pricing",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "0",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "additionalProperty": program.bulletPoints.map((point, pointIndex) => ({
+      "@type": "PropertyValue",
+      "name": `Feature ${pointIndex + 1}`,
+      "value": point,
+      "description": `Detail of program ${program.title}`
+    })),
+    "image": program.images.map(img => ({
+      "@type": "ImageObject",
+      "url": img.src,
+      "caption": img.alt,
+      "width": 400,
+      "height": 400
+    })),
+    "thumbnailUrl": {
+      "@type": "ImageObject",
+      "url": program.images[0]?.src,
+      "caption": program.images[0]?.alt,
+      "width": 400,
+      "height": 400
+    },
+    "potentialAction": {
+      "@type": "Action",
+      "name": program.buttonText,
+      "target": `https://yamencreates.com/work#${program.id}`
+    },
+    "url": `https://yamencreates.com/work#${program.id}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://yamencreates.com/work#${program.id}`
+    }
+  }));
+
   return (
     <div className="px-5 md:px-10 lg:px-20">
+      <Script
+        id="programs-jsonld"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(programsJsonLd)
+        }}
+      />
       <h1 className="text-[clamp(1.5rem,4vw,3rem)]">{programsData.sectionTitle}</h1>
       <div className="mt-8">
         <Accordion type="multiple">

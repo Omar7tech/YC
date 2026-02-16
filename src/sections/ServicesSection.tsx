@@ -1,10 +1,60 @@
 'use client'
 import ServiceCard from "@/components/ServiceCard"
 import { motion } from "framer-motion"
+import Script from "next/script"
 
 function ServicesSection() {
+    const serviceJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Brand Strategy and Creative Services",
+        "description": "Combining art, strategy, and psychology to create compelling storytelling for brands. Strategic brand & creative partnership services.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Yamen Creates",
+            "url": "https://yamencreates.com"
+        },
+        "serviceType": "Brand Strategy",
+        "areaServed": "Global",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Creative Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Branding"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Websites"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Content Creation"
+                    }
+                }
+            ]
+        }
+    };
+
     return (
         <section className="relative pt-10">
+            <Script
+                id="services-jsonld"
+                type="application/ld+json"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(serviceJsonLd)
+                }}
+            />
             <motion.div
                 aria-hidden
                 className="pointer-events-none absolute inset-x-70 -top-64 -bottom-64 -left-40 bg-[radial-gradient(ellipse_at_center,rgba(200,42,255,0.50),transparent_70%)] blur-[120px]"
