@@ -7,6 +7,89 @@ import Image from 'next/image'
 const workJson = {
   "categories": [
     {
+      "name": "Branding",
+      "items": [
+
+
+        {
+          "imageUrl": "/branding/lemah.mp4",
+          "title": "LeMah",
+          "mediaType": "video"
+        },
+        {
+          "imageUrl": "/branding/stonehouse.mp4",
+          "title": "Stone House",
+          "mediaType": "video"
+        },
+        {
+          "imageUrl": "/branding/betterbites.mp4",
+          "title": "Better Bites",
+          "mediaType": "video"
+        },
+        {
+          "imageUrl": "/branding/aah.mp4",
+          "title": "Dalia Abi Husseib",
+          "mediaType": "video"
+        },
+        {
+          "imageUrl": "/branding/dolait.mp4",
+          "title": "Do Lait",
+          "mediaType": "video"
+        },
+
+        {
+          "imageUrl": "/branding/frameit.mp4",
+          "title": "Frame It",
+          "mediaType": "video"
+        }
+        ,
+        {
+          "imageUrl": "/branding/ma7masa.mp4",
+          "title": "Lebanese Roasters",
+          "mediaType": "video"
+        }
+        ,
+        {
+          "imageUrl": "/branding/reelestate.mp4",
+          "title": "Real Estate Bts",
+          "mediaType": "video"
+        }
+        ,
+        {
+          "imageUrl": "/branding/serotonin.mp4",
+          "title": "Sero Tonin",
+          "mediaType": "video"
+        },
+
+      ]
+    },
+
+    {
+      "name": "Content",
+      "items": [
+        {
+          "imageUrl": "/content/ai.mp4",
+          "title": "Social Media Campaign",
+          "mediaType": "video",
+
+        },
+        {
+          "imageUrl": "/vid.mp4",
+          "title": "Video Production",
+          "mediaType": "video",
+        },
+        {
+          "imageUrl": "https://picsum.photos/400/400?random=8",
+          "title": "Content Strategy",
+          "mediaType": "image",
+          "link": {
+            "url": "https://example.com/content-strategy",
+            "title": "View Project"
+          }
+        }
+      ]
+    },
+    {
       "name": "Websites",
       "items": [
         {
@@ -38,53 +121,8 @@ const workJson = {
         }
       ]
     },
-    {
-      "name": "Branding",
-      "items": [
-        {
-          "imageUrl": "https://picsum.photos/400/400?random=4",
-          "title": "Brand Identity",
-          "mediaType": "image"
-        },
-        {
-          "imageUrl": "https://picsum.photos/400/400?random=5",
-          "title": "Logo Design",
-          "mediaType": "image"
-        }
-      ]
-    },
-    {
-      "name": "Content",
-      "items": [
-        {
-          "imageUrl": "https://picsum.photos/400/400?random=6",
-          "title": "Social Media Campaign",
-          "mediaType": "image",
-          "link": {
-            "url": "https://example.com/social-media-campaign",
-            "title": "View Project"
-          }
-        },
-        {
-          "imageUrl": "/vid.mp4",
-          "title": "Video Production",
-          "mediaType": "video",
-          "link": {
-            "url": "https://example.com/video-production",
-            "title": "View Project"
-          }
-        },
-        {
-          "imageUrl": "https://picsum.photos/400/400?random=8",
-          "title": "Content Strategy",
-          "mediaType": "image",
-          "link": {
-            "url": "https://example.com/content-strategy",
-            "title": "View Project"
-          }
-        }
-      ]
-    }
+
+
   ]
 }
 
@@ -165,13 +203,13 @@ function OurWorksection() {
   }, [])
 
   useEffect(() => {
-  const categoryFromUrl = searchParams.get('category')
-  if (categoryFromUrl) {
-    setActiveCategory(categoryFromUrl)
-    setLoadedImages(new Set())
-    setLoadedVideos(new Set())
-  }
-}, [searchParams])
+    const categoryFromUrl = searchParams.get('category')
+    if (categoryFromUrl) {
+      setActiveCategory(categoryFromUrl)
+      setLoadedImages(new Set())
+      setLoadedVideos(new Set())
+    }
+  }, [searchParams])
 
 
   return (
@@ -183,8 +221,8 @@ function OurWorksection() {
             key={index}
             onClick={() => handleCategoryChange(category)}
             className={`px-3 py-1.5 md:px-4 md:py-2 border rounded-full font-light transition-all duration-300 text-xs md:text-sm cursor-pointer ${activeCategory === category
-                ? 'bg-gray-200 text-black border-gray-300'
-                : 'border-white/30 text-white hover:bg-white/10'
+              ? 'bg-gray-200 text-black border-gray-300'
+              : 'border-white/30 text-white hover:bg-white/10'
               }`}
           >
             {category}
@@ -238,7 +276,6 @@ function OurWorksection() {
               )}
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
                 <div>
-                  <p className="text-white text-sm font-medium">{activeCategory}</p>
                   {item.title && <h3 className="text-white text-lg font-semibold">{item.title}</h3>}
                 </div>
               </div>

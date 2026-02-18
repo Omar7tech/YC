@@ -32,19 +32,19 @@ const programsData = {
       ],
       "images": [
         {
-          "src": "https://picsum.photos/400/400?random=8",
+          "src": "/programs/foundation/lemah.jpeg",
           "alt": "YC Foundation Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=9",
+          "src": "/programs/foundation/dah.jpeg",
           "alt": "YC Foundation Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=10",
+          "src": "/programs/foundation/realestate.jpeg",
           "alt": "YC Foundation Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=11",
+          "src": "/programs/foundation/frameit.jpeg",
           "alt": "YC Foundation Program"
         }
       ]

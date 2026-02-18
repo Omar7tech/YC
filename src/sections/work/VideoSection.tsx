@@ -9,7 +9,7 @@ function VideoSection() {
         loop
         muted
         playsInline
-        src="/workvid.mp4"
+        src="/WorkSectionVideo.mp4"
       />
     </div>
   )
