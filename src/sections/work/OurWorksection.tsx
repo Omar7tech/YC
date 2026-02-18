@@ -68,25 +68,58 @@ const workJson = {
       "name": "Content",
       "items": [
         {
+          "imageUrl": "/content/porsche.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        {
           "imageUrl": "/content/ai.mp4",
           "title": "Social Media Campaign",
           "mediaType": "video",
-
         },
         {
-          "imageUrl": "/vid.mp4",
+          "imageUrl": "/content/ugg.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        {
+          "imageUrl": "/content/dishes.mp4",
           "title": "Video Production",
           "mediaType": "video",
         },
         {
-          "imageUrl": "https://picsum.photos/400/400?random=8",
+          "imageUrl": "/content/manooshi.mp4",
           "title": "Content Strategy",
-          "mediaType": "image",
-          "link": {
-            "url": "https://example.com/content-strategy",
-            "title": "View Project"
-          }
-        }
+          "mediaType": "video",
+        },
+        {
+          "imageUrl": "/content/outside.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        {
+          "imageUrl": "/content/plates.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        
+        {
+          "imageUrl": "/content/restuarent.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        {
+          "imageUrl": "/content/sweet.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+        
+        {
+          "imageUrl": "/content/zahalan.mp4",
+          "title": "Content Strategy",
+          "mediaType": "video",
+        },
+
       ]
     },
     {

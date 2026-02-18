@@ -71,19 +71,19 @@ const programsData = {
       ],
       "images": [
         {
-          "src": "https://picsum.photos/400/400?random=12",
+          "src": "/programs/framework/stonehouse.jpeg",
           "alt": "YC Framework Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=13",
+          "src": "/programs/framework/roaster.jpeg",
           "alt": "YC Framework Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=14",
+          "src": "/programs/framework/serotonin.jpeg",
           "alt": "YC Framework Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=15",
+          "src": "/programs/framework/dolait.jpeg",
           "alt": "YC Framework Program"
         }
       ]
@@ -110,19 +110,19 @@ const programsData = {
       ],
       "images": [
         {
-          "src": "https://picsum.photos/400/400?random=16",
+          "src": "/programs/reposition/coffee.jpeg",
           "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=17",
+          "src": "/programs/reposition/liwan.jpeg",
           "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=18",
+          "src": "/programs/reposition/eat.jpeg",
           "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=19",
+          "src": "/programs/reposition/betterbites.jpeg",
           "alt": "YC Reposition Program"
         }
       ]
@@ -150,20 +150,20 @@ const programsData = {
       ],
       "images": [
         {
-          "src": "https://picsum.photos/400/400?random=20",
-          "alt": "YC Scale Program"
+          "src": "/programs/scale/zahalan.jpeg",
+          "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=21",
-          "alt": "YC Scale Program"
+          "src": "/programs/scale/ugg.jpeg",
+          "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=22",
-          "alt": "YC Scale Program"
+          "src": "/programs/scale/food.jpeg",
+          "alt": "YC Reposition Program"
         },
         {
-          "src": "https://picsum.photos/400/400?random=23",
-          "alt": "YC Scale Program"
+          "src": "/programs/scale/lb.jpeg",
+          "alt": "YC Reposition Program"
         }
       ]
     }
